@@ -44,11 +44,11 @@ public class Corredor extends Thread {
         if (paso == 0) {
             while (true) {
                 int pasoActual = posicionPasos(1);
-                if (pasoActual >= 33) {
+                if (pasoActual >=33) {
                     equipo.setPosicionA(33);
                     synchronized (equipo) {
-                        equipo.notifyAll();
                         paso = 33;
+                //      equipo.notify();
                     }
                     break;
                 }
@@ -69,7 +69,9 @@ public class Corredor extends Thread {
                 if (pasoActual >= 66) {
                     equipo.setPosicionB(66);
                     synchronized (equipo) {
-                        equipo.notify();
+                        paso=66;
+                   //   equipo.notify();
+                       
                     }
                     break;
                 }
@@ -90,16 +92,6 @@ public class Corredor extends Thread {
                 if (pasoActual >= 100) {
                     equipo.setPosicionC(100);
                     System.out.println("Equipo ganador "+ equipo.getNombre());
-                    System.out.println("  /|||||||\\ ");
-                    System.out.println(" |          |");
-                    System.out.println("  \\   #1  /");
-                    System.out.println("   \\     /");
-                    System.out.println("    \\   / ");
-                    System.out.println("     \\ /");
-                    System.out.println("     |||");
-                    System.out.println("    |||||");
-                    System.out.println("    |||||");
-                    System.out.println("     ||| ");
                     System.exit(0);
                     break;
                 }
@@ -122,7 +114,7 @@ public class Corredor extends Thread {
      */
     public int posicionPasos(int numPosi) {
         try {
-            Thread.sleep(500);            
+            Thread.sleep(1000);            
         } catch (InterruptedException ex) {
             Logger.getLogger(Corredor.class.getName()).log(Level.SEVERE, null, ex);
         }

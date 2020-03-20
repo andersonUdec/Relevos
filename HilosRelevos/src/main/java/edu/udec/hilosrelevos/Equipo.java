@@ -14,6 +14,15 @@ public class Equipo extends Thread {
    /**
     * Declaracion de variables
     */
+    
+    public static final String ANSI_RESET = "\u001B[0m";
+    
+    public static final String ANSI_RED = "\u001B[31m";
+    
+    public static final String ANSI_GREEN = "\u001B[32m";
+    
+    public static final String ANSI_BLUE = "\u001B[34m";
+    
     private String nombre;
   
     private int inicio;
@@ -38,6 +47,7 @@ public class Equipo extends Thread {
         this.posicionA = 0;
         this.posicionB = 33;
         this.posicionC = 66;
+       
     }
     /**
      * metodo sincronizado que imprime posiciones de los 
@@ -45,21 +55,45 @@ public class Equipo extends Thread {
      * @return 
      */
     public synchronized String imprimir() {
-        String trayecto = "Equipo: "+nombre+" ";
+       String trayecto = "Equipo: "+nombre+" ";
+       if( nombre.contains("1")){
         for (int i = inicio; i <= fin; i++) {
             if (i == posicionA) {
-                trayecto += "01";
+                trayecto +=ANSI_RED+ "A" ;
             } else if (i == posicionB) {
-                trayecto += "02";
+                trayecto += ANSI_RED+ "B";
             } else if (i == posicionC) {
-                trayecto += "03";
+                trayecto +=ANSI_RED+  "C";
             } else {
-                trayecto += "_";
+                trayecto += ANSI_RED+"_"+ANSI_RESET;
+            }            
+        }
+       }else if(nombre.contains("2")){
+        for (int i = inicio; i <= fin; i++) {
+            if (i == posicionA) {
+                trayecto +=ANSI_BLUE+  "A";
+            } else if (i == posicionB) {
+                trayecto += ANSI_BLUE+ "B";
+            } else if (i == posicionC) {
+                trayecto += ANSI_BLUE+ "C";
+            } else {
+                trayecto += ANSI_BLUE+ "_"+ANSI_RESET;
             }
         }
-        
-        return trayecto;
-        
+       }else if(nombre.contains("3")){
+        for (int i = inicio; i <= fin; i++) {
+            if (i == posicionA) {
+                trayecto +=ANSI_GREEN+ "A";
+            } else if (i == posicionB) {
+                trayecto += ANSI_GREEN+"B";
+            } else if (i == posicionC) {
+                trayecto +=ANSI_GREEN+ "C";
+            } else {
+                trayecto += ANSI_GREEN+"_"+ANSI_RESET;
+            }
+        }
+       }     
+       return trayecto;
     }
     /**
      * Metodo que retorna

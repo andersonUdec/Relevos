@@ -34,13 +34,23 @@ public class Principal {
     
     public void iniciar(){
         atleta1.start ();
+        atleta1.setPriority(10);   //10
         atleta2.start ();
+        atleta2.setPriority(7);   //7
         atleta3.start ();
+        atleta3.setPriority(4);   //4
         atleta4.start ();
+        atleta4.setPriority(9);   //9
         atleta5.start ();
+        atleta5.setPriority(6);   //6
         atleta6.start ();
+        atleta6.setPriority(3);   //3
         atleta7.start ();
+        atleta7.setPriority(8);   //8
         atleta8.start ();
+        atleta8.setPriority(5);   //5
         atleta9.start ();
+        atleta6.setPriority(2);  //2
+
     }
 }

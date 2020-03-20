@@ -21,16 +21,14 @@ public class Utilitaria {
     public static int random(){
         double i=Math.random()*100;
         int j=(int) i;
-        if(j<25){
-            j=0;
-        }
-        else if(j>=25&&j<50){
+      
+        if(j<33){
             j=1;
         }
-        else if(j>=50&&j<75){
+        else if(j>=33&&j<66){
             j=2;
         }
-        else if(j>=75){
+        else if(j>=66&&j<=100){
             j=3;
         }
         return j;
