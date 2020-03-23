@@ -34,6 +34,8 @@ public class Equipo extends Thread {
     private int posicionB;
     
     private int posicionC;
+
+
    /**
     * Constructor de la clase
     * @param nombre
@@ -47,16 +49,15 @@ public class Equipo extends Thread {
         this.posicionA = 0;
         this.posicionB = 33;
         this.posicionC = 66;
-       
     }
     /**
      * metodo sincronizado que imprime posiciones de los 
      * corredores
      * @return 
      */
-    public synchronized String imprimir() {
+    public synchronized String imprimir(){
        String trayecto = "Equipo: "+nombre+" ";
-       if( nombre.contains("1")){
+       if(nombre.contains("1")){
         for (int i = inicio; i <= fin; i++) {
             if (i == posicionA) {
                 trayecto +=ANSI_RED+ "A" ;
@@ -66,7 +67,8 @@ public class Equipo extends Thread {
                 trayecto +=ANSI_RED+  "C";
             } else {
                 trayecto += ANSI_RED+"_"+ANSI_RESET;
-            }            
+            }    
+            
         }
        }else if(nombre.contains("2")){
         for (int i = inicio; i <= fin; i++) {
@@ -92,7 +94,7 @@ public class Equipo extends Thread {
                 trayecto += ANSI_GREEN+"_"+ANSI_RESET;
             }
         }
-       }     
+       }
        return trayecto;
     }
     /**
@@ -179,4 +181,5 @@ public class Equipo extends Thread {
     public void setPosicionC(int posicionC) {
         this.posicionC = posicionC;
     }
+    
 }

@@ -48,7 +48,7 @@ public class Corredor extends Thread {
                     equipo.setPosicionA(33);
                     synchronized (equipo) {
                         paso = 33;
-                //      equipo.notify();
+                        equipo.notifyAll();
                     }
                     break;
                 }
@@ -70,8 +70,7 @@ public class Corredor extends Thread {
                     equipo.setPosicionB(66);
                     synchronized (equipo) {
                         paso=66;
-                   //   equipo.notify();
-                       
+                        equipo.notifyAll();             
                     }
                     break;
                 }
@@ -91,6 +90,7 @@ public class Corredor extends Thread {
                 int pasoActual = posicionPasos(3);
                 if (pasoActual >= 100) {
                     equipo.setPosicionC(100);
+                    paso=100;
                     System.out.println("Equipo ganador "+ equipo.getNombre());
                     System.exit(0);
                     break;
@@ -114,7 +114,7 @@ public class Corredor extends Thread {
      */
     public int posicionPasos(int numPosi) {
         try {
-            Thread.sleep(1000);            
+            Thread.sleep(500);            
         } catch (InterruptedException ex) {
             Logger.getLogger(Corredor.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -122,11 +122,11 @@ public class Corredor extends Thread {
         if (numPosi == 1) {
             equipo.setPosicionA(equipo.getPosicionA() + valorAvance);
             if(equipo.imprimir().contains("1")){
-                equipoUno=equipo.imprimir();
+                equipoUno=equipo.imprimir();      
             }else if(equipo.imprimir().contains("2")){
-                equipoTres=equipo.imprimir();
-            }else if(equipo.imprimir().contains("3")){
                 equipoDos=equipo.imprimir();
+            }else if(equipo.imprimir().contains("3")){
+                equipoTres=equipo.imprimir();
             }
             if(equipoUno!=null){
                 System.out.println(equipoUno);
@@ -136,7 +136,7 @@ public class Corredor extends Thread {
             }
             if(equipoTres!=null){
                 System.out.println(equipoTres);
-            }            
+            }
             return equipo.getPosicionA();
         }
         if (numPosi == 2) {
@@ -144,9 +144,9 @@ public class Corredor extends Thread {
             if(equipo.imprimir().contains("1")){
                 equipoUno=equipo.imprimir();
             }else if(equipo.imprimir().contains("2")){
-                equipoTres=equipo.imprimir();
-            }else if(equipo.imprimir().contains("3")){
                 equipoDos=equipo.imprimir();
+            }else if(equipo.imprimir().contains("3")){
+                equipoTres=equipo.imprimir();
             }
             if(equipoUno!=null){
                 System.out.println(equipoUno);
@@ -164,9 +164,9 @@ public class Corredor extends Thread {
             if(equipo.imprimir().contains("1")){
                 equipoUno=equipo.imprimir();
             }else if(equipo.imprimir().contains("2")){
-                equipoTres=equipo.imprimir();
-            }else if(equipo.imprimir().contains("3")){
                 equipoDos=equipo.imprimir();
+            }else if(equipo.imprimir().contains("3")){
+                equipoTres=equipo.imprimir();
             }
             if(equipoUno!=null){
                 System.out.println(equipoUno);
